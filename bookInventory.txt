@@ -1,0 +1,2 @@
+287444245|Head First Java|Kathy Sierra, Bert Bates|12|123-789-456|O'Reilly Media|4|78
+147690704|PHP & MySQL for dummies|Janet Valade|12|123-789|John Wiley & Sons|3|56
