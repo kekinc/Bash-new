@@ -1,4 +1,7 @@
 #!/bin/bash
+# File comparator program will take two arguments file1 & file 2 name
+
+#Author: Kekin Chheda
 
 if [ $# -lt 2 ]
 then

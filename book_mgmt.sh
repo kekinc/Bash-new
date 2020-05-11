@@ -84,6 +84,7 @@ case $option in
 
 	3)
 		read -p "Enter primary key to edit the record: " bookId
+		bookEntry='NULL'
 		newBookEntry=''
 		echo  "======== Enter details you want to edit ======= "
 		echo
@@ -99,16 +100,60 @@ case $option in
 		
 		#check whether primary key is valid or not
 
-		bookEntry=$(grep -w "$bookId" bookInventory.txt)
-		echo "Book Entry is: ${bookEntry}"
-		
-		echo "Author $author"
-		
+		bookEntry=$(grep -w "^$bookId" bookInventory.txt)
+		echo "Book Entry is ${bookEntry}"
+		if [ -z "$bookEntry" ]
+		then
+			echo "Invalid book ID!"
+			exit 1
+		fi
+		#<BookName>|<CommaSeparatedListOfAuthors>|<Price>|<ISBN>|<Publication>|<Edition>|<#Copies>
+		currentBookTitle=$(echo $bookEntry|cut -d '|' -f 2)
+		currentAuthor=$(echo $bookEntry|cut -d '|' -f 3)
+		currentPrice=$(echo $bookEntry|cut -d '|' -f 4)
+		currentISBN=$(echo $bookEntry|cut -d '|' -f 5)
+		currentPublication=$(echo $bookEntry|cut -d '|' -f 6)
+		currentEdition=$(echo $bookEntry|cut -d '|' -f 7)
+		currentCopies=$(echo $bookEntry|cut -d '|' -f 8)
+
+		# newBookEntry=$bookEntry
+
 		if [ ! -z "$bookTitle" ]
 		then
-			echo
-			
+			newBookEntry=$(echo $bookEntry | sed "s/$currentBookTitle/$bookTitle/")
 		fi
+		if [ ! -z "$author" ]
+		then
+			newBookEntry=$(echo $newBookEntry | sed "s/$currentAuthor/$author/")
+		fi
+		if [ ! -z "$copies" ]
+		then
+			newBookEntry=$(echo $newBookEntry | sed "s/$currentCopies/$copies/")
+		fi
+		if [ ! -z "$price" ]
+		then
+			newBookEntry=$(echo $newBookEntry | sed "s/$currentPrice/$price/")
+		fi
+		if [ ! -z "$isbn" ]
+		then
+			newBookEntry=$(echo $newBookEntry | sed "s/$currentISBN/$isbn/")
+		fi
+		if [ ! -z "$publication" ]
+		then
+			newBookEntry=$(echo $newBookEntry | sed "s/$currentPublication/$publication/")
+		fi
+		if [ ! -z "$edition" ]
+		then
+			echo "Current Edition: $currentEdition"
+			echo "Edition: $edition"
+			newBookEntry=$(echo $newBookEntry | sed "s/$currentEdition/$edition/")
+		fi
+
+		echo "New Book Entry is: ${newBookEntry}"
+		touch temp.txt
+		sed "s/$bookEntry/$newBookEntry/"  bookInventory.txt > temp.txt
+		cat temp.txt > bookInventory.txt
+		rm temp.txt		
 		;;	
 		
 	*)

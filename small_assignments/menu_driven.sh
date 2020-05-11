@@ -5,7 +5,7 @@
 # 2. List users who have currently logged in.
 # 3. Present working directory
 # 4. Exit
-
+# Author: Kekin Chheda
 
 echo "Enter Appropriate option in order to perform following"
 echo "1) Display contents of /etc/passwd"

@@ -1,4 +1,8 @@
 #!/bin/bash
+#List terminals script will list all the terminals where current user is
+#  loggedin
+
+#Author: Kekin Chheda
 
 echo "Currently Loggedin user: $LOGNAME"
 

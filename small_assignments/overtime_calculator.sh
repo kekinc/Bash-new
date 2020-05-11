@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#Program to calculate overtime hours & pay of employees
+# Program to calculate overtime hours & pay of employees
+# Author : Kekin Chheda
 
 for (( i=1; i <= 10; i++ ))
 do

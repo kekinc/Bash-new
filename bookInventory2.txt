@@ -1,3 +1,0 @@
-56168978|PHP & MySQL for Dummies|Janet Valade|12|123-456-789|John Wiley & Sons|3|56
-287444245|Head First Java|Kathy Sierra, Bert Bates|12|123-789-456|O'Reilly Media|4|78
-15556878|PHP & Mysql for dummies|Janet Valade|12|123-789-456|John Wiley & Sons|3|56
