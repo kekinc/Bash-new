@@ -42,4 +42,4 @@ ln -s /home/myfile  /var/myfilelnk
 
 rm /home/myfile && cd /var #check broken symlink myfilelnk
 
-adduser Sachin && su Sachin
+#adduser Sachin && su Sachin
